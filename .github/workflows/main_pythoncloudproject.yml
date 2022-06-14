@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_92381c21dc5b4dae93e81cf2a55714cd }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_0bfb4ef0738147f1bdabbb36c7206391 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_d5bc23a163ba4b989e3b2b74f8e67616 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_d27ca5282a394717a0478e6e43d85fae }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_92381c21dc5b4dae93e81cf2a55714cd }}/manojkumar656/ineuron-ml-april:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d5bc23a163ba4b989e3b2b74f8e67616 }}/pythoncloudproject:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'pythoncloudproject'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_96bc7849c877490f99eb8f1bd3991ce4 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_92381c21dc5b4dae93e81cf2a55714cd }}/manojkumar656/ineuron-ml-april:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f67a78fb19724c0ab7c79e9e7278fb5f }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d5bc23a163ba4b989e3b2b74f8e67616 }}/pythoncloudproject:${{ github.sha }}'
